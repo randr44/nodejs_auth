@@ -26,13 +26,14 @@ const authenticateUser = async (data) => {
         const tokenData = { userId: fetchedUser._id, email };
         const token = await createToken(tokenData);
 
-        //assign user tokens
+        //assign user token
         fetchedUser.token = token;
         return fetchedUser;
     } catch (error) {
         throw new Error(error);
     }
 }
+
 const createNewUser = async (data) => {
     try {
         const { name, email, password } = data;
