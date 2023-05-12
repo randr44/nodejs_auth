@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { createNewUser, authenticateUser } = require('./controller');
 const auth = require('./../../middleware/auth');
-
+const { sendVerificationOTPEmail, verifyUserEmail } = require('./../email_verification/controller');
 //protected route
 router.get('/private_data', auth, (req, res) => {
     res
@@ -47,6 +47,7 @@ router.post('/signup', async (req, res) => {
      } else {
          // good credentials
          const newUser = await createNewUser({ name, email, password });
+         await sendVerificationOTPEmail(email);
          res.status(200).json(newUser);
      } 
  } catch (error) {
