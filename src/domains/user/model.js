@@ -5,6 +5,7 @@ const UserSchema = new Schema({
     name: String,
     email: {type: String, unique: true},
     password: String,
+    dateOfBirth: Date,
     token: String,
     verified: {type: Boolean, default: false},
 });
