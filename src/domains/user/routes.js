@@ -31,12 +31,14 @@ router.post('/', async (req, res) => {
 // signup
 router.post('/signup', async (req, res) => {
  try {
-     let { name, email, password } = req.body;
+     let { name, email, password, dateOfBirth, confirmedPassword } = req.body; // confirmPassword, dateOfBirth
      name = name ? name.trim() : '';
      email = email ? email.trim() : '';
      password = password ? password.trim() : '';
+     dateOfBirth = dateOfBirth ? dateOfBirth.trim() : '';
+     confirmedPassword = confirmedPassword ? confirmedPassword.trim() : '';
 
-     if (!(name && email && password)) {
+     if (!(name && email && password && confirmedPassword && dateOfBirth)) { // && confirmPassword, dateOfBirth
          throw Error('Empty input fields!');
      } else if (!/^[a-zA-Z ]*$/.test(name)) {
          throw Error('Invalid name entered!');
@@ -44,9 +46,11 @@ router.post('/signup', async (req, res) => {
          throw Error('Invalid email entered!');
      } else if (password.length < 8) {
          throw Error('Password is too short!');
+     }  else if (password !== confirmedPassword) {
+         throw Error('Passwords don\'t match!');
      } else {
          // good credentials
-         const newUser = await createNewUser({ name, email, password });
+         const newUser = await createNewUser({ name, email, password, dateOfBirth });
          await sendVerificationOTPEmail(email);
          res.status(200).json(newUser);
      } 
