@@ -45,11 +45,8 @@ const createNewUser = async (data) => {
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
-            res.json({
-                status: 'FAILED',
-                message: 'User already provided email already exists!'
-            });
-        } else {
+            throw new Error('User already exists!');
+        }
 
         // hash password
         const hashedPassword = await hashData(password);
@@ -63,7 +60,6 @@ const createNewUser = async (data) => {
 
         const createdUser = await newUser.save();
         return createdUser;
-        }
     } catch (error) {
         throw new Error(error);
     }
