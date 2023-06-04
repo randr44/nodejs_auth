@@ -45,7 +45,7 @@ const createNewUser = async (data) => {
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
-            throw new Error('User already exists!');
+            throw new Error('User already provided email already exists!');
         }
 
         // hash password
