@@ -3,7 +3,7 @@ require('./config/db');
 
 // express
 const express = require('express');
-const bodyParser = express.json();
+const bodyParser = express.json;
 const cors = require("cors");
 const routes = require('./routes');
 
