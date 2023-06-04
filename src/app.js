@@ -12,7 +12,7 @@ const app = express();
 
 // cors
 app.use(cors());
-app.use(bodyParser({ extended: true }));
+app.use(bodyParser());
 app.use("/api/v1", routes)
 
 module.exports = app;
