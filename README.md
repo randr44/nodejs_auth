@@ -1,10 +1,11 @@
 # nodejs_auth
+Node/Express backend api
+MongoDb Database
 
-npm run dev
-This express backend api comes from tothepointcode tutorial mongo, express, node
+to start local dev server: npm run dev
 
-npm init - node modules
-git - gitignore
+
+Add PORT and MONGO_DB_URL to
 setup mongodb db, get connection string add this to .env
 config/db connectionToDB function
 app is where the express server si being defined... defined with standard practices
