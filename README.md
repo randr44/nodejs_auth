@@ -5,14 +5,17 @@ MongoDb Database
 to start local dev server: npm run dev
 
 
-Add PORT and MONGO_DB_URL to
-setup mongodb db, get connection string add this to .env
-config/db connectionToDB function
-app is where the express server si being defined... defined with standard practices
+Add .env 
+PORT=3000
+MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxxxx.mongodb.net/UserDB?retryWrites=true&w=majority
+TOKEN_KEY=some unique value
+TOKEN_EXPIRY=how long you want user token set for 365d or ??
 
-then have script to run everything npm run dev nodemon src/index.js
+env vars if using emailJS
+AUTH_EMAIL=your email provider
+AUTH_PASSWORD=your passwd
+EMAIL_SERVICE_PASS=your email service pass
 
-initialized server and connected it to db
 
 
 
